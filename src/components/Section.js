@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const Section = () => {
+const Section = (props) => {
   return (
-    <Container bgImage={""}>
+    <Container bgImage={props.backgroundImg}>
       <ItemText>
-        <h1>Model S</h1>
-        <p>Order Online for Touchless Delivery</p>
+        <h1>{props.title}</h1>
+        <p>{props.description}</p>
       </ItemText>
       <ButtonGroup>
-        <LeftButton>Custom Order</LeftButton>
-        <RightButton>Existing Inventory</RightButton>
+        <LeftButton>{props.leftBtnText}</LeftButton>
+        <RightButton>{props.rightBtnText}</RightButton>
       </ButtonGroup>
       <DownArrow src="/images/down-arrow.svg" />
     </Container>
@@ -23,7 +23,7 @@ const Container = styled.div`
   background-color: blue;
   width: 100%;
   height: 100vh;
-  background-image: url("/images/model-s.jpg");
+  background-image: ${(props) => `url('images/${props.bgImage}')`};
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -53,6 +53,7 @@ const LeftButton = styled.div`
   opacity: 0.85;
   font-size: 12px;
   margin: 8px;
+  cursor: pointer;
 `;
 const RightButton = styled(LeftButton)`
   background-color: white;
@@ -61,5 +62,6 @@ const RightButton = styled(LeftButton)`
 `;
 const DownArrow = styled.img`
   height: 40px;
-  animation: animateDown infinite 1.2s;
+  animation: animateDown infinite 1.5s;
+  margin-bottom: 50px;
 `;
